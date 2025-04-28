@@ -42,6 +42,7 @@ for dr in "$INPUT_DIR"/*; do
             fi
         done
     fi
+done
 
 echo "Копирование файлов из '$INPUT_DIR' в '$OUTPUT_DIR' успешно завершено"
 
