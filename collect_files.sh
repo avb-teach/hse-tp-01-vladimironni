@@ -5,7 +5,7 @@
 
 
 if [ $# -ne 2 ]; then
-    echo "Ошибка ввода. Укажите два аргумента"
+    echo "Ошибка ввода. Укажите ровно два аргумента"
     exit 1
 fi
 
@@ -26,9 +26,22 @@ echo "Произвожу копирование файлов из входной
 for files in "$INPUT_DIR"/*; do
     if [ -f "$files" ]; then
         cp "$files" "$OUTPUT_DIR"/
-        echo "Файл $(basename "$files") скопирован"
+        echo "Файл $(basename "$files") успешно скопирован"
     fi
 done
+
+for dr in "$INPUT_DIR"/*; do
+    if [ -d "$dr" ]; then
+        dir_name=$(basename "$dr")
+        mkdir -p "$OUTPUT_DIR/$dir_name"
+        echo "Директория $dir_name создана в "$OUTPUT_DIR""
+        for file in "$dr"/*; do
+            if [ -f "$file" ]; then
+                cp "$file" "$OUTPUT_DIR/$dir_name"/
+                echo "Файл $dir_name/$(basename "$file") успешно скопирован"
+            fi
+        done
+    fi
 
 echo "Копирование файлов из '$INPUT_DIR' в '$OUTPUT_DIR' успешно завершено"
 
