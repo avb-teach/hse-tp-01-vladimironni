@@ -19,7 +19,7 @@
 Структура `/home/input_dir`:
 - input_dir
 	- a.txt
-	- dir2
+	- dir2Z
 		- b.txt
 	- dir3
    		- c.txt
